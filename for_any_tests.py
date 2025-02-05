@@ -1,11 +1,10 @@
-# import os 
+# import os
 
 # for path_dir, dir_list, file_list in os.walk('/Model/MNIST/training'):
-#     print(f"Путь к папке {path_dir}")
-#     print("Кол-во папок", path_dir.split('/')[-1])
-    # print("Кол-во файлов", len(file_list))
+#     print(f"The path to {path_dir}")
+#     print("The class", path_dir.split('/')[-1])
+#     print("The number of blobs", len(file_list))
 
-from PIL import Image
+import os 
 
-img = Image.open('/Model/MNIST/training\class_8')
-print(img.size)
+os.path.join('/Model/MNIST/training/class_9', '4.jpg')

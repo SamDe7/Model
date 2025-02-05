@@ -1,8 +1,7 @@
-import torch
+
 import torchvision
 
 import struct
-import sys
 
 from array import array
 from os import path, makedirs
@@ -19,7 +18,7 @@ def read(dataset):
 
     elif dataset is 'testing':
         path_img = "E:/Model/MNIST/raw/t10k-images-idx3-ubyte"
-        path_lbl = "E:/Model/MNIST/raw/t10k-labels-idx3-ubyte"
+        path_lbl = "E:/Model/MNIST/raw/t10k-labels-idx1-ubyte"
 
     else:
         raise ValueError("Dataset must be 'testing' or 'training'")
@@ -46,12 +45,12 @@ def write_dataset(labels, data, size, rows, cols, output_dir):
         output_filename = path.join(output_dirs[label], str(i) + ".jpg")
         print('Writing' + output_filename)
 
-    with open(output_filename, 'wb') as h:
-        data_i = [data[(i*rows*cols + j*cols) : (i*rows*cols + (j+1)*cols)] for j in range(rows)]
-        data_array = np.asarray(data_i)
+        with open(output_filename, 'wb') as h:
+            data_i = [data[(i*rows*cols + j*cols) : (i*rows*cols + (j+1)*cols)] for j in range(rows)]
+            data_array = np.asarray(data_i)
 
-        im = Image.fromarray(data_array)
-        im.save(output_filename)
+            im = Image.fromarray(data_array)
+            im.save(output_filename)
 
 output_path = '/Model/mnist'
 

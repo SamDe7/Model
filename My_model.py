@@ -21,7 +21,7 @@ class MnistDataset(Dataset):
 
         for path_dir, dir_list, file_list in os.walk(path):
             if path_dir == path:
-                self.classes = dir_list
+                self.classes = sorted(dir_list)
                 self.class_to_idx = {
                     cls_name : i for i, cls_name in enumerate(self.classes)
                                     }
@@ -47,6 +47,5 @@ class MnistDataset(Dataset):
         return sample, target
 
 train_data = MnistDataset('/Model/MNIST/training')
-test_data = MnistDataset('/Model/MNIST/raw')
+test_data = MnistDataset('/Model/MNIST/testing')
 
-print(train_data.classes)
