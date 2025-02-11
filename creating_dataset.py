@@ -1,4 +1,3 @@
-
 import torchvision
 
 import struct

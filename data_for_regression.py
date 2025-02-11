@@ -3,13 +3,13 @@ import numpy as np
 import json
 from PIL import Image
 
-if not os.path.isdir("datasetset2"):
-    os.mkdir("datasetset2")
+if not os.path.isdir("Dataset"):
+    os.mkdir("Dataset")
 
-img = np.random.randint(0, 50, [10, 64, 64], dtype=np.uint8)
-square = np.random.randint(100, 200, [10, 15, 15], dtype=np.uint8)
+img = np.random.randint(0, 50, [10000, 64, 64], dtype=np.uint8)
+square = np.random.randint(100, 200, [10000, 15, 15], dtype=np.uint8)
 
-coords = np.empty([10, 2])
+coords = np.empty([10000, 2])
 
 data = {}
 for i in range(img.shape[0]):
@@ -21,12 +21,12 @@ for i in range(img.shape[0]):
     coords[i] = [y, x]
 
     name_img = f"img_{i}.jpg"
-    path_img = os.path.join('datasetset2/', name_img)
+    path_img = os.path.join('Dataset/', name_img)
 
     image = Image.fromarray(img[i])
     image.save(path_img)
 
     data[name_img] = [y, x]
 
-    with open('datasetset2/coords.json', 'w') as f:
-        json.dump(data, f, indent=5)
+    with open('Dataset/coords.json', 'w') as f:
+        json.dump(data, f, indent=2)
